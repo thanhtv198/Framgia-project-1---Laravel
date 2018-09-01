@@ -1,0 +1,156 @@
+
+    [view=search] {
+        height: 29.5px;
+        margin-bottom: 1px;
+    }
+
+    [view=header] .main .search-bar {
+        display: flex;
+        margin-top: 5px;
+        height: 40px;
+        width: 60%;
+        margin-bottom: 15px;
+        flex: 1 1 auto;
+        margin-left: 0px;
+        margin-right: 50px;
+        border-radius: 7px;
+        box-shadow: 2px 2px 14px 2px rgba(5, 5, 13, 0.2);
+        background: white;
+        position: relative;
+    }
+
+    [view=header] .main .search-bar input {
+        display: flex;
+        align-items: center;
+        padding-left: 20px;
+        padding-right: 20px;
+
+        height: 100%;
+        flex: 1 1 auto;
+
+        font-family: Lato;
+        font-size: 16px;
+
+        background: none;
+        border: none;
+        outline: none;
+    }
+
+    [view=header] .main form {
+        flex: 1 1 auto;
+        max-width: 400px;
+    }
+
+    [view=header] .main .search-bar .fa-search {
+        display: flex;
+        height: 100%;
+        flex: 0 0 auto;
+        align-items: center;
+        margin: auto;
+        padding-left: 20px;
+        padding-right: 20px;
+        position: absolute;
+        right: 0;
+        border: none;
+        outline: none;
+        background: none;
+    }
+    /* login */
+    .wrappers {
+        margin-top: 80px;
+        margin-bottom: 20px;
+        /* background:red; */
+      }
+    
+      body {
+        background: #d6d6f5;
+      }
+    
+      .form-signin-login {
+        max-width: 420px;
+        padding: 30px 38px 66px;
+        margin: 0 auto;
+        background-color: #eee;
+        border: 3px dotted rgba(0, 0, 0, 0.1);
+      }
+    
+      .form-signin-heading {
+        text-align: center;
+        margin-bottom: 30px;
+      }
+    
+      .form-control {
+        position: relative;
+        font-size: 16px;
+        height: auto;
+        padding: 10px;
+      }
+    
+      input[type="text"] {
+        margin-bottom: 0px;
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+      }
+    
+      input[type="password"] {
+        margin-bottom: 20px;
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+      }
+    
+      .colorgraph {
+        height: 7px;
+        border-top: 0;
+        background: #c4e17f;
+        border-radius: 5px;
+        background-image: -webkit-linear-gradient(left, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1 87.5%, #62c2e4 87.5%, #62c2e4);
+        background-image: -moz-linear-gradient(left, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1 87.5%, #62c2e4 87.5%, #62c2e4);
+        background-image: -o-linear-gradient(left, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1 87.5%, #62c2e4 87.5%, #62c2e4);
+        background-image: linear-gradient(to right, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1 87.5%, #62c2e4 87.5%, #62c2e4);
+      }
+
+      /*acount*/
+
+    .box .add{
+        text-align: right;
+        width:99%;
+        padding-bottom: 10px;
+    }
+
+    .fa-eye{
+        font-size: 20px;
+    }
+    .fa-trash{
+        font-size: 20px;
+        color: red;
+    }
+    #status-accept{
+        font-size:16px;
+        color:red;
+        margin-left: 10px;
+    }
+    #status-accepted{
+        font-size:20px;
+        color:green;
+    }
+    .img_news{
+         width: 500px;
+         height: 150px;
+     }
+    .admin-name{
+        color:Red;
+    }
+    [view=user-manage] input[type=date]::-webkit-inner-spin-button {
+        visibility: hidden;
+    }
+    [view=user-manage] input[type=date] {
+        height: 45px;
+    }
+    [view=user-manage] input[type=number]::-webkit-inner-spin-button {
+        /*visibility: hidden;*/
+        height: 35px;
+    }
+    input[type=checkbox], input[type=radio] {
+        margin: 7px 26px 0px;
+        transform: scale(1.5);
+    }
