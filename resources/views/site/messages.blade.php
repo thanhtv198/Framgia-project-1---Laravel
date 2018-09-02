@@ -9,6 +9,7 @@
         img {
             max-width: 100%;
         }
+
         .inbox_people {
             background: #f8f8f8 none repeat scroll 0 0;
             float: left;
@@ -221,7 +222,6 @@
         }
     </style>
     <div class="container">
-
         <div id="data">
             <form action="{{ route('post_message') }}" method="POST">
                 {{csrf_field()}}
@@ -254,8 +254,7 @@
                             <input type="hidden" name="key" value="{{ $key }}">
                             <input type="hidden" name="key1" value="{{ $key1 }}">
                             <input type="hidden" name="sender_name" value="{{ $name }}">
-                            <button class="msg_send_btn" type="submit"><i class="fa fa-paper-plane-o"
-                                                                          aria-hidden="true"></i>
+                            <button class="msg_send_btn" type="submit"><i class="fa fa-paper-plane-o" aria-hidden="true"></i>
                             </button>
                         </div>
                     </div>
@@ -264,29 +263,7 @@
         </div>
     </div>
 
-    {{--<script>--}}
-        {{--var id = $('meta[name="user"]').attr('content');--}}
-        {{--var socket = io('http://localhost:6001')--}}
-        {{--socket.on('chat:message', function (data) {--}}
-            {{--console.log(data)--}}
-            {{--if ($('#' + data.id).length == 0) {--}}
-                {{--if (data.sender_id != id)--}}
-                    {{--$('#msg_history').append('<div class="incoming_msg">\n' +--}}
-                        {{--'                            <div class="received_msg">\n' +--}}
-                        {{--'                                <div class="received_withd_msg">\n' +--}}
-                        {{--'                                    <p>' + data.content + '</p>\n' +--}}
-                        {{--'                                    <span class="time_date"> ' + data.created_at + '</span></div>\n' +--}}
-                        {{--'                            </div>\n' +--}}
-                        {{--'                        </div>')--}}
-            {{--}--}}
-            {{--else {--}}
-                {{--console.log('sent');--}}
-            {{--}--}}
-        {{--})--}}
-
-    {{--</script>--}}
     <script type="text/javascript">
         $('#msg_history').scrollTop($('#msg_history')[0].scrollHeight);
     </script>
-
 @stop
