@@ -34,6 +34,7 @@ class CartController extends Controller
     {
         try {
             $product = Product::getById($id);
+
             if ($product->promotion == 0) {
                 $price = $product->price;
             } else {
@@ -94,8 +95,11 @@ class CartController extends Controller
     public function postCheckOut(OrderRequest $request)
     {
         $totalItems = Cart::count();
+
         $content = Cart::content();
+
         $total = Cart::subtotal();
+
         $totalMoney = str_replace(',', '', $total);
 
         if ($totalItems <= 0) {
