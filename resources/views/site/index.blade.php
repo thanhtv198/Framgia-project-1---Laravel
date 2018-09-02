@@ -103,7 +103,7 @@
                                             </div>
                                         </div>
                                         <div class="compare_count">
-                                            <a href="{{ route('add_compare', $row->id) }}" onclick="addCompare()"
+                                            <a href="{{ route('add_compare', $row->id) }}"
                                                class="product-new-top fa fa-balance-scale" id="compare"></a>
                                         </div>
                                     </div>

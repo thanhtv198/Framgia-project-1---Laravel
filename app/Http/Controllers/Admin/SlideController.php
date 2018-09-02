@@ -12,6 +12,9 @@ use App\Http\Requests\UpdateSlideRequest;
 
 class SlideController extends Controller
 {
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function index()
     {
         $slides = Slide::getSlide();
@@ -19,57 +22,81 @@ class SlideController extends Controller
         return view('admin.content.slide.index', compact('slides'));
     }
 
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function create()
     {
         return view('admin.content.slide.add');
     }
 
+    /**
+     * @param SlideRequest $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function store(SlideRequest $request)
     {
         if ($request->hasFile('image')) {
             $file = $request->file('image');
+
             $name = $file->getClientOriginalName();
+
             $file->move(config('app.slideUrl'), $name);
+
             $request->merge([
                 'avatar' => $name,
             ]);
         }
-        slide::create($request->all());
+
+        Slide::create($request->all());
 
         return redirect()->route('slide.index')->with('success', trans('common.with.add_success'));
     }
 
+    /**
+     * @param $id
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function show($id)
     {
-        try {
-            $slide = Slide::findOrFail($id);
+        $slide = Slide::findOrFail($id);
 
-            return view('admin/content/slide/edit', compact('slide'));
-        } catch (ModelNotFoundException $e) {
-            return view('admin.404');
-        }
+        return view('admin/content/slide/edit', compact('slide'));
     }
 
-    public function update($id, UpdateSlideRequest $request)
+    /**
+     * @param $id
+     * @param UpdateSlideRequest $request
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\RedirectResponse|\Illuminate\View\View
+     */
+    public function update(UpdateSlideRequest $request, $id)
     {
         try {
             $slide = Slide::findOrFail($id);
+
             $imgOld = $slide->avatar;
+
             if ($request->hasFile('image')) {
                 $file = $request->file('image');
+
                 $name = $file->getClientOriginalName();
+
                 if (file_exists(config('app.slideUrl') . '/' . $imgOld)) {
                     unlink(config('app.slideUrl') . '/' . $imgOld);
                 }
+
                 $file->move(config('app.slideUrl'), $name);
+
                 $request->merge([
                     'avatar' => $name,
                 ]);
+
             } else {
                 $request->merge([
                     'avatar' => $imgOld,
                 ]);
             }
+
             $slide->update($request->all());
 
             return redirect()->route('slide.index')->with('success', trans('common.with.edit_success'));
@@ -78,18 +105,23 @@ class SlideController extends Controller
         }
     }
 
+    /**
+     * @param $id
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function deleteSlide($id)
     {
-        try {
-            $slide = Slide::findOrFail($id);
-            $slide->delete();
+        $slide = Slide::findOrFail($id);
 
-            return redirect()->route('slide.index')->with('success', trans('common.with.delete_success'));
-        } catch (ModelNotFoundException $e) {
-            return view('admin.404');
-        }
+        $slide->delete();
+
+        return redirect()->route('slide.index')->with('success', trans('common.with.delete_success'));
     }
 
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function deleteManySlide(Request $request)
     {
         if ($request->check == null) {
@@ -97,12 +129,17 @@ class SlideController extends Controller
         }
         for ($i = 0; $i < count($request->check); $i++) {
             $slide = Slide::findOrFail($request->check[$i]);
+
             $slide->delete();
         }
 
         return redirect()->route('slide.index')->with('success', trans('common.with.delete_success'));
     }
 
+    /**
+     * @param Request $request
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function searchslide(Request $request)
     {
         $slides = Slide::search($request->key);

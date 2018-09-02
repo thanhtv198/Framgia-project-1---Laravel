@@ -21,7 +21,8 @@ class RedisEvent implements ShouldBroadcast
      * @return void
      */
 
-    public $message ;
+    public $message;
+
     public function __construct(Message $message)
     {
         $this->message = $message;
@@ -39,7 +40,8 @@ class RedisEvent implements ShouldBroadcast
         return ['chat'];
     }
 
-    public function broadcastAs(){
+    public function broadcastAs()
+    {
         return 'message';
     }
 }

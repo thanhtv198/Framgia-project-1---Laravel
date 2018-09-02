@@ -75,27 +75,27 @@ class Product extends Model
 
     public function scopeSearch($query, $request)
     {
-        return $query->where('name', 'like', '%' . $request . '%')->where('remove', 0)->where('status', 1)->paginate(config('app.paginateProduct'));
+        return $query->where('name', 'ilike', '%' . $request . '%')->where('remove', 0)->where('status', 1)->paginate(config('app.paginateProduct'));
     }
 
     public function scopeSearchCommon($query, $key, $user_id)
     {
-        return $query->where('name', 'like', '%' . $key . '%')
-            ->orWhere('description', 'like', '%' . $key . '%')
+        return $query->where('name', 'ilike', '%' . $key . '%')
+            ->orWhere('description', 'ilike', '%' . $key . '%')
             ->orWhereIn('user_id', $user_id)
             ->where('remove', 0)->where('status', 1)->paginate(config('app.paginateProduct'));
     }
 
     public function scopeSearchNameDes($query, $key)
     {
-        return $query->where('name', 'like', '%' . $key . '%')
-            ->orWhere('description', 'like', '%' . $key . '%')
+        return $query->where('name', 'ilike', '%' . $key . '%')
+            ->orWhere('description', 'ilike', '%' . $key . '%')
             ->where('remove', 0)->where('status', 1)->paginate(config('app.paginateProduct'));
     }
 
     public function scopeSearchName($query, $name)
     {
-        return $query->where('name', 'like', '%' . $name . '%')->where('remove', 0)->paginate(config('app.paginateProductSearch'));
+        return $query->where('name', 'ilike', '%' . $name . '%')->where('remove', 0)->paginate(config('app.paginateProductSearch'));
     }
 
     public function scopeDiscount($query)
@@ -120,7 +120,7 @@ class Product extends Model
 
     public function scopeGetById($query, $id)
     {
-        return $query->where('id', $id)->where('remove', 0)->first();
+        return $query->findOrFail($id)->where('remove', 0)->first();
     }
 
     public function scopeAccept($query, $id)

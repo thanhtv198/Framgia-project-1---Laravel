@@ -254,7 +254,6 @@
                             <input type="hidden" name="key" value="{{ $key }}">
                             <input type="hidden" name="key1" value="{{ $key1 }}">
                             <input type="hidden" name="sender_name" value="{{ $name }}">
-                            <input type="hidden" name="key_notify" value="{{ $key_check }}">
                             <button class="msg_send_btn" type="submit"><i class="fa fa-paper-plane-o"
                                                                           aria-hidden="true"></i>
                             </button>

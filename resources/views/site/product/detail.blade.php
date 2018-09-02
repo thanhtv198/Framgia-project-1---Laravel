@@ -144,6 +144,14 @@
                         <td>{{ trans('common.product.battery') }}</td>
                         <td>{{ $product->battery }}</td>
                     </tr>
+                    @if(isset($product->customizeProducts))
+                        @foreach($product->customizeProducts as $p)
+                            <tr>
+                                <td>{{ json_decode($p->property) }}</td>
+                                <td>{{ $p->detail }}</td>
+                            </tr>
+                        @endforeach
+                    @endif
                     <thead>
                 </table>
                 <div class="product-icon-container">

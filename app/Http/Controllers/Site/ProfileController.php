@@ -12,39 +12,44 @@ use App\Http\Requests\UserRequest;
 
 class ProfileController extends Controller
 {
+    /**
+     * @param $id
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function getProfile($id)
     {
-        try {
-            $user = User::findOrFail($id);
-            $local = Local::pluck('name', 'id');
+        $user = User::findOrFail($id);
 
-            return view('site.profile.info', compact('local', 'user'));
-        } catch (ModelNotFoundException $e) {
-            return view('site.404');
-        }
+        $local = Local::pluck('name', 'id');
+
+        return view('site.profile.info', compact('local', 'user'));
     }
 
+    /**
+     * @param $id
+     * @param UserRequest $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function postProfile($id, UserRequest $request)
     {
-        try {
-            $user = User::findOrFail($id);
-            $passOld = $user->password;
-            if ($request->password == $passOld) {
-                $passNew = $passOld;
-            } else {
-                $passNew = bcrypt($request->password);
-            }
-            $request->merge([
-                'password' => $passNew,
-                'remove' => 0,
-            ]);
-            $user->update($request->all());
+        $user = User::findOrFail($id);
 
-            return redirect()->route('get_profile', $id)->with('success', trans('common.with.edit_success'));
+        $passOld = $user->password;
 
-        } catch (ModelNotFoundException $e) {
-            return view('site.404');
+        if ($request->password == $passOld) {
+            $passNew = $passOld;
+        } else {
+            $passNew = bcrypt($request->password);
         }
+
+        $request->merge([
+            'password' => $passNew,
+            'remove' => 0,
+        ]);
+
+        $user->update($request->all());
+
+        return redirect()->route('get_profile', $id)->with('success', trans('common.with.edit_success'));
     }
 }
 

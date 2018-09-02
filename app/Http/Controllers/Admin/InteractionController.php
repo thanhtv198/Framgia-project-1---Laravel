@@ -10,32 +10,44 @@ use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class InteractionController extends Controller
 {
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function getRespond()
     {
-        $responds = Respond::orderBy('id', 'DESC');
+        $responds = Respond::getAll()->get();
 
         return view('admin.interaction.respond.index', compact('responds'));
     }
 
+    /**
+     * @param $id
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function deleteRespond($id)
     {
-        try {
-            $respond = Respond::findOrFail($id);
-            $respond->delete();
+        $respond = Respond::findOrFail($id);
 
-            return redirect('admin/respond/index')->with('success', trans('common.with.delete_success'));
-        } catch (ModelNotFoundException $e) {
-            return view('admin.404');
-        }
+        $respond->delete();
+
+        return redirect('admin/respond/index')->with('success', trans('common.with.delete_success'));
     }
 
+    /**
+     * @param Request $req
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function searchRespond(Request $req)
     {
-        $responds = Respond::where('title', 'like', '%' . $req->key . '%')->orwhere('content', 'like', '%' . $req->key . '%')->get();
+        $responds = Respond::search($req->key)->get();
 
         return view('admin.interaction.respond.index', compact('responds'));
     }
 
+    /**
+     * @param $id
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function check($id)
     {
         Respond::where('id', $id)->update(['status' => 1]);

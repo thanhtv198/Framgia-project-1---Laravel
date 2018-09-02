@@ -21,4 +21,9 @@ class News extends Model
     {
         return $query->orderBy('id', 'DESC')->get();
     }
+
+    public function scopeSearch($query, $request)
+    {
+      return $query->where('title', 'ilike', '%' . $request . '%')->orwhere('content', 'ilike', '%' . $request . '%');
+    }
 }

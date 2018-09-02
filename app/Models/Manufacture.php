@@ -20,4 +20,9 @@ class Manufacture extends Model
     {
         return $this->hasMany(Product::class);
     }
+
+    public function scopeSearch($query, $key)
+    {
+        return $query->where('name', 'ilike', '%' . $key . '%');
+    }
 }

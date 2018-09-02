@@ -14,32 +14,49 @@ use Carbon\Carbon;
 class SocketController extends Controller
 {
 
-    public function index(Request $request, $id)
+    /**
+     * @param $id
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function index($id)
     {
+        $receiver = User::findOrFail($id);
+
         $key = $id . '+' . (auth()->user()->id);
+
         $key1 = (auth()->user()->id) . '+' . $id;
+
         $receive = $id;
-        $receiver = User::find($id);
         $name = auth()->user()->name;
+
         \App\Models\Notification::where('key', $key)->update(['read_at' => Carbon::now()]);
 
         $messages = Message::where('key', $key)->orWhere('key', $key1)->get();
 
-        return view('site.messages', compact('messages', 'receive', 'key', 'key1', 'name', 'key_check', 'receiver'));
+        return view('site.messages', compact('messages', 'receive', 'key', 'key1', 'name', 'receiver'));
     }
 
-
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function postSendMessage(Request $request)
     {
 
         $request->merge([
             'sender_id' => auth()->user()->id,
         ]);
+
         $messages = Message::create($request->all());
-        $receiver = User::find($request->receiver_id);
+
+        $receiver = User::findOrFail($request->receiver_id);
+
         $key = (auth()->user()->id) . '+' . $request->receiver_id;
+
         Notification::send($receiver, new \App\Notifications\MessageNotification($messages));
+
         \App\Models\Notification::orderBy('created_at', 'DESC')->first()->update(['key' => $key]);
+
         event(
             $e = new RedisEvent($messages)
         );

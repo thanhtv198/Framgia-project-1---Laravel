@@ -22,7 +22,7 @@ class Slide extends Model
     }
     public function scopeSearch($query, $request)
     {
-        return $query->where('title', 'like', '%' . $request . '%')->get();
+        return $query->where('title', 'ilike', '%' . $request . '%')->get();
     }
 }
 

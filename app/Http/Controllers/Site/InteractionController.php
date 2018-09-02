@@ -21,10 +21,15 @@ class InteractionController extends Controller implements FromCollection, WithHe
 {
     use Exportable;
 
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\RedirectResponse|\Illuminate\View\View
+     */
     public function getOrderBought()
     {
         $id = Auth::user()->id;
+
         $orders = Order::getBuyer($id);
+
         if (count($orders) == 0) {
             return redirect()->route('get_profile', $id)->with('message', trans('common.with.no_product_bought'));
         } else {
@@ -32,6 +37,10 @@ class InteractionController extends Controller implements FromCollection, WithHe
         }
     }
 
+    /**
+     * @param $id
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function getOrderBoughtDetail($id)
     {
         $orderdetails = OrderDetail::orderBought($id);
@@ -40,6 +49,10 @@ class InteractionController extends Controller implements FromCollection, WithHe
 
     }
 
+    /**
+     * @param $id
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\RedirectResponse|\Illuminate\View\View
+     */
     public function cancelOrder($id)
     {
         try {
@@ -51,17 +64,30 @@ class InteractionController extends Controller implements FromCollection, WithHe
         }
     }
 
+    /**
+     * @param $id
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function deleteOrderBought($id)
     {
-        Order::deleteOrder($id);
+        try {
+            Order::deleteOrder($id);
 
-        return back()->with('sucess', trans('common.with.delete_success'));
+            return back()->with('sucess', trans('common.with.delete_success'));
+        } catch (ModelNotFoundException $e) {
+            return view('admin.404');
+        }
     }
 
+    /**
+     * @param Request $request
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\RedirectResponse|\Illuminate\View\View
+     */
     public function getOrderSold(Request $request)
     {
         $id = Auth::user()->id;
         $orderdetails = OrderDetail::getSold();
+
         if (count($orderdetails) == 0) {
             return redirect()->route('get_profile', $id)->with('message', trans('common.with.no_order'));
         }
@@ -71,16 +97,22 @@ class InteractionController extends Controller implements FromCollection, WithHe
         return view('site.interaction.order_sold', compact('orderdetails'));
     }
 
+    /**
+     * @return \Illuminate\Support\Collection
+     */
     public function collection()
     {
         $orderdetails = Orderdetail::getSold();
+
         foreach ($orderdetails as $row) {
             $status = $row->status;
+
             if ($status == 0) {
                 $status = 'Delivery now';
             } else {
                 $status = 'Handle';
             }
+
             $order[] = array(
                 'Code' => $row->id,
                 'Full Name' => $row->order->name,
@@ -100,11 +132,17 @@ class InteractionController extends Controller implements FromCollection, WithHe
         return (collect($order));
     }
 
+    /**
+     * @return mixed
+     */
     public function exportFile()
     {
         return Excel::download(new InteractionController(), 'orders.xlsx');
     }
 
+    /**
+     * @return array
+     */
     public function headings(): array
     {
         return [
@@ -123,6 +161,10 @@ class InteractionController extends Controller implements FromCollection, WithHe
         ];
     }
 
+    /**
+     * @param $id
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function handleOrderSold($id)
     {
         Orderdetail::handleSold($id);
@@ -130,6 +172,10 @@ class InteractionController extends Controller implements FromCollection, WithHe
         return back()->with('sucess', trans('common.with.handle_success'));
     }
 
+    /**
+     * @param $id
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function deleteOrderSold($id)
     {
         Orderdetail::deleteOrderDetail($id);
@@ -137,17 +183,25 @@ class InteractionController extends Controller implements FromCollection, WithHe
         return back()->with('sucess', trans('common.with.delete_success'));
     }
 
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function respond()
     {
         return view('site.interaction.respond');
     }
 
+    /**
+     * @param RespondRequest $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function postRespond(RespondRequest $request)
     {
         $request->merge([
             'status' => 0,
             'user_id' => Auth::user()->id,
         ]);
+
         Respond::create($request->all());
 
         return redirect()->route('home_page')->with('success', trans('common.with.send_success'));

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Site;
 
+use App\Models\Rating;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Product;
@@ -19,38 +20,53 @@ class ProductController extends Controller
 {
     use Rateable;
 
+    /**
+     * @param $id
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function getDetailProduct($id)
     {
-        try {
-            $product = Product::findOrFail($id);
-            if($product->status == 1){
-                $images = $product->images;
-                $categories = Category::all();
-                $manufactures = Manufacture::all();
-                $comments = Comment::getById($product->id);
-                $views = $product->views;
-                Product::updateViews($id, $views);
+        $product = Product::findOrFail($id);
 
-                return view('site.product.detail', compact('product', 'categories', 'manufactures', 'images', 'comments', 'replies'));
-            }
+        if ($product->status == 1) {
+            $images = $product->images;
 
-            return view('site.404');
-        } catch (ModelNotFoundException $e) {
-            return view('site.404');
+            $categories = Category::all();
+
+            $manufactures = Manufacture::all();
+
+            $comments = Comment::getById($product->id);
+
+            $views = $product->views;
+
+            Product::updateViews($id, $views);
+
+            return view('site.product.detail', compact('product', 'categories', 'manufactures', 'images', 'comments', 'replies'));
         }
+
+        return view('site.404');
     }
 
+    /**
+     * @param CommentRequest $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function postAddComment(CommentRequest $request)
     {
         $request->merge([
             'user_id' => Auth::user()->id,
             'status' => 1,
         ]);
+
         Comment::create($request->all());
 
         return back();
     }
 
+    /**
+     * @param CommentRequest $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function postAddReply(CommentRequest $request)
     {
         $request->merge([
@@ -58,34 +74,40 @@ class ProductController extends Controller
             'status' => 1,
             'parent_id' => $request->comment_id,
         ]);
+
         Comment::create($request->all());
 
         return back();
     }
 
+    /**
+     * @param Request $request
+     * @param $id
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function rating(Request $request, $id)
     {
         if (!$request->rate) {
             return back()->with('message', 'You have to select your rating');
         }
-        try {
-            $pro = Product::findorFail($id);
-            $userId = auth()->user()->id;
-            $collect = DB::table('ratings')->where('user_id', $userId)->where('rateable_id', $id)->first();
-            if ($collect == null) {
-                $rating = new \willvincent\Rateable\Rating;
-                $rating->rating = $request->rate;
-                $rating->user_id = $userId;
-                $pro->ratings()->save($rating);
-            }
 
-            DB::table('ratings')->where('user_id', $userId)->where('rateable_id', $id)->update([
-                'rating' => $request->rate,
-            ]);
-            return back();
-        } catch (ModelNotFoundException $e) {
-            return view('admin.404');
+        $pro = Product::findOrFail($id);
+
+        $userId = auth()->user()->id;
+
+        $collect = Rating::getUserRating($userId, $id)->first();
+
+        if ($collect == null) {
+            $rating = new \willvincent\Rateable\Rating;
+            $rating->rating = $request->rate;
+            $rating->user_id = $userId;
+
+            $pro->ratings()->save($rating);
         }
+
+        Rating::updateUserRating($userId, $id, $request->rate);
+
+        return back();
     }
 }
 

@@ -198,9 +198,11 @@
             var url = $('#url').val();
             var sender = $('.read2').attr('id');
             var product = $('.read1').attr('id');
+
             if (sender) {
                 window.location.href = url + 'send' + '/' + sender + '/' + key;
             }
+
             if (product) {
                 window.location.href = url + 'interact/sold' + '/' + key;
             }

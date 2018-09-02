@@ -444,8 +444,12 @@
 
     }
 
+    .em a{
+        font-size: 15px;
+    }
+
     .em {
-        height: 3em;
+        height: 2.5em;
         overflow: hidden;
         width: 98%;
     }

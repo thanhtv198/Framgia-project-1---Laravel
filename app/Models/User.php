@@ -74,7 +74,7 @@ class User extends Authenticatable
 
     public function scopeSearch($query, $key)
     {
-        return $query->where('name', 'like', '%' . $key . '%')->get()->toArray();
+        return $query->where('name', 'ilike', '%' . $key . '%')->get()->toArray();
     }
 
     public function scopeRemove($query, $id){
