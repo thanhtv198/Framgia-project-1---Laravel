@@ -217,6 +217,21 @@ class AccountController extends Controller
 
         $user->update($request->all());
 
+        $pass_old = $user->password;
+
+        if ($request->password == $pass_old) {
+            $pass_new = $pass_old;
+        } else {
+            $pass_new = bcrypt($request->password);
+        }
+
+        $request->merge([
+            'password' => $pass_new,
+            'remove' => 0,
+        ]);
+
+        $user->update($request->all());
+
         return redirect('admin/manager/index')->with('success', trans('common.with.edit_success'));
     }
 

@@ -18,6 +18,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
 
 Route::group(['prefix' => 'admin', 'middleware' => 'admin', 'namespace' => 'Admin'], function () {
     Route::get('/home', 'HomeController@index')->name('home_admin');
+
     Route::group(['prefix' => 'member'], function () {
         Route::get('/index', 'AccountController@getMember')->name('get_member');
         Route::get('/add', 'AccountController@addMember')->name('add_member');
@@ -28,6 +29,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin', 'namespace' => 'Admi
         Route::get('/search', 'AccountController@searchMember')->name('search_member');
         Route::post('/delete', 'AccountController@deleteMulMember')->name('mul_del_member');
     });
+
     Route::group(['prefix' => 'manager'], function () {
         Route::get('/index', 'AccountController@getManager')->name('get_manager');
         Route::get('/add', 'AccountController@addManager')->name('add_manager')->middleware('role_admin');
