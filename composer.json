@@ -12,6 +12,7 @@
         "fzaninotto/faker": "~1.4",
         "gloudemans/shoppingcart": "^2.5",
         "laravel/framework": "5.5.*",
+        "laravel/socialite": "^3.1",
         "laravel/tinker": "~1.0",
         "laravelcollective/html": "^5.5",
         "maatwebsite/excel": "^3.0",

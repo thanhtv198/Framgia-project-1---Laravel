@@ -230,10 +230,12 @@ class HomeController extends Controller
     public function logOut()
     {
         Auth::logout();
+
         Cart::destroy();
+
         Cart::instance('compare')->destroy();
 
-        return redirect('signin');
+        return redirect('login');
     }
 }
 

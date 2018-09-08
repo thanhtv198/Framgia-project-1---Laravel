@@ -184,8 +184,8 @@ return [
         Unisharp\Ckeditor\ServiceProvider::class,
         Maatwebsite\Excel\ExcelServiceProvider::class,
         willvincent\Rateable\RateableServiceProvider::class,
+        Laravel\Socialite\SocialiteServiceProvider::class,
 
-//        StreamLab\StreamLabProvider\StreamLabServiceProvider::class,
 
         /*
          * Package Service Providers...
@@ -199,7 +199,6 @@ return [
          App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
-
 
     ],
 
@@ -254,6 +253,7 @@ return [
         'Html' => Collective\Html\HtmlFacade::class,
         'Excel' => Maatwebsite\Excel\Facades\Excel::class,
         'Pusher' => Pusher\Pusher::class,
+        'Socialite' => Laravel\Socialite\Facades\Socialite::class,
     ],
 ];
 

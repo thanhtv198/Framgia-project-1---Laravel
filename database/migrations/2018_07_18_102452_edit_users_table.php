@@ -14,7 +14,7 @@ class EditUsersTable extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->integer('remove')->after('name');
+            $table->integer('remove')->default(0)->after('name');
             $table->string('phone_number')->after('name');
             $table->date('birthday')->after('name');
             $table->string('address')->after('name');
