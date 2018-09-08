@@ -75,7 +75,7 @@ class LocalsTableSeeder extends Seeder
             'Hải Phòng',
             'Hà Nội',
             'TP HCM',
-            'Kh'
+            'Khác'
         );
         for ($i = 0; $i < count($list); $i++) {
             $address = [

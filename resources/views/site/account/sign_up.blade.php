@@ -50,6 +50,22 @@
                     </div>
                 </div>
                 {!! Form::close() !!}
+                <div class="row omb_row-sm-offset-3 omb_socialButtons">
+                    <div class="col-xs-4 col-sm-5 social-login">
+                        <a href="{{ url('login/facebook') }}" class="btn btn-lg btn-block omb_btn-facebook loginBtn loginBtn--facebook">
+                            <i class="fa fa-facebook visible-xs"></i>
+                            <span class="hidden-xs">Sign up use facebook</span>
+                        </a>
+                    </div>
+                    <div class="col-xs-6 col-sm-2">
+                    </div>
+                    <div class="col-xs-6 col-sm-5 social-login">
+                        <a href="{{ url('login/google') }}" class="btn btn-lg btn-block omb_btn-google loginBtn loginBtn--google">
+                            <i class="fa fa-google-plus visible-xs"></i>
+                            <span class="hidden-xs">Sign up use google+</span>
+                        </a>
+                    </div>
+                </div>
             </div>
             <div class="clearfix"></div>
         </div>
