@@ -134,10 +134,8 @@
                 </div>
             </div>
         </div>
-
-        {{--        <input type="hidden" name="_token" id="token" value="{{ csrf_token() }}">--}}
     </section>
-    {{--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>--}}
+
     <script type="text/javascript">
         $(document).ready(
             function () {
