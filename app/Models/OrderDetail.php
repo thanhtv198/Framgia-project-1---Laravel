@@ -33,27 +33,34 @@ class OrderDetail extends Model
 
     public function scopeGetSold($query)
     {
-        return $query->where('user_id', Auth::user()->id)->orderBy('id', 'DESC')->where('remove', 0)->get();
+        return $query->where('user_id', Auth::user()->id)->orderBy('id', 'DESC')
+            ->where('remove', config('page.order_detail.remove.active'))
+            ->get();
     }
 
     public function scopehandleSold($query, $id)
     {
-        return $query->where('id', $id)->update(['status' => 1]);
+        return $query->where('id', $id)
+            ->update(['status' => config('page.order_detail.remove.inactive')]);
     }
 
     public function scopeOrderBought($query, $id)
     {
-        return $query->where('order_id', $id)->orderBy('id', 'DESC')->get();
+        return $query->where('order_id', $id)
+            ->orderBy('id', 'DESC')
+            ->get();
     }
 
     public function scopeCancel($query, $id)
     {
-        return $query->where('id', $id)->update(['status' => 2]);
+        return $query->where('id', $id)
+            ->update(['status' => config('page.order_detail.status.cancel')]);
     }
 
     public function scopeDeleteOrderDetail($query, $id)
     {
-        return $query->where('id', $id)->update(['remove' => 1]);
+        return $query->where('id', $id)
+            ->update(['remove' => config('page.order_detail.remove.inactive')]);
     }
 }
 

@@ -44,7 +44,7 @@ class ProfileController extends Controller
 
         $request->merge([
             'password' => $passNew,
-            'remove' => 0,
+            'remove' => config('page.user.remove.active'),
         ]);
 
         $user->update($request->all());

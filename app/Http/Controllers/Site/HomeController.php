@@ -52,7 +52,7 @@ class HomeController extends Controller
     public function search(Request $request)
     {
         $key1 = $request->key;
-        $key = str_replace('__', '/', substr($key1, 0, 10));;
+        $key = str_replace('__', '/', $key1);;
 
         $users = User::search($key);
 
@@ -83,8 +83,8 @@ class HomeController extends Controller
      */
     public function searchPrice(Request $request)
     {
-        $from = 1000000 * ($request->from);
-        $to = 1000000 * ($request->to);
+        $from = config('page.product.unit') * ($request->from);
+        $to = config('page.product.unit') * ($request->to);
 
         if ($from && $to) {
             $products = Product::priceBetween($from, $to);

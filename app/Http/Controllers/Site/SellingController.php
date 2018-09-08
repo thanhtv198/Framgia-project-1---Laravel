@@ -181,7 +181,7 @@ class SellingController extends Controller
             $product->delete();
         } else {
             $product->update([
-                'remove' => '1',
+                'remove' => config('page.product.remove.inactive'),
             ]);
         }
 

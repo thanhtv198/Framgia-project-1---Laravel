@@ -107,7 +107,7 @@ class InteractionController extends Controller implements FromCollection, WithHe
         foreach ($orderdetails as $row) {
             $status = $row->status;
 
-            if ($status == 0) {
+            if ($status == config('page.order_detail.status.active')) {
                 $status = 'Delivery now';
             } else {
                 $status = 'Handle';
@@ -198,7 +198,7 @@ class InteractionController extends Controller implements FromCollection, WithHe
     public function postRespond(RespondRequest $request)
     {
         $request->merge([
-            'status' => 0,
+            'status' => config('page.respond.status.active'),
             'user_id' => Auth::user()->id,
         ]);
 

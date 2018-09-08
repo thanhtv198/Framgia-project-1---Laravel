@@ -24,6 +24,8 @@ class Image extends Model
 
     public function scopeUpdateImgProduct($query, $id, $i, $name)
     {
-        return $query->where('product_id', $id)->where('stt', $i)->update(['image' => $name]);
+        return $query->where('product_id', $id)
+            ->where('stt', $i)
+            ->update(['image' => $name]);
     }
 }

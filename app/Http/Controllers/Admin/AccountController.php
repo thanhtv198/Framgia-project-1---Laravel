@@ -170,7 +170,7 @@ class AccountController extends Controller
     {
         $request->merge([
             'password' => bcrypt($request->password),
-            'remove' => 0,
+            'remove' => config('page.user.remove.active')
         ]);
 
         User::create($request->all());
@@ -212,7 +212,7 @@ class AccountController extends Controller
 
         $request->merge([
             'password' => $passNew,
-            'remove' => 0,
+            'remove' => config('page.user.remove.active'),
         ]);
 
         $user->update($request->all());

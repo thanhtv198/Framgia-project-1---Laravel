@@ -30,6 +30,7 @@ class Respond extends Model
 
     public function scopeSearch($query, $request)
     {
-        return $query->where('title', 'like', '%' . $request . '%')->orwhere('content', 'like', '%' . $$request . '%');
+        return $query->where('title', 'like', '%' . $request . '%')
+            ->orwhere('content', 'like', '%' . $request . '%');
     }
 }

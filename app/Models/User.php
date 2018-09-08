@@ -86,12 +86,14 @@ class User extends Authenticatable
 
     public function scopeManager($query, $request)
     {
-        return $query->where('name', 'ilike', '%' . $request . '%')->where('level_id', '<>', '3');
+        return $query->where('name', 'ilike', '%' . $request . '%')
+            ->where('level_id', '<>', config('page.user.role.member'));
     }
 
     public function scopeMember($query, $request)
     {
-        return $query->where('name', 'like', '%' . $request . '%')->where('level_id', '3');
+        return $query->where('name', 'like', '%' . $request . '%')
+            ->where('level_id', config('page.user.role.member'));
     }
 }
 

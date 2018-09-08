@@ -40,17 +40,23 @@ class Order extends Model
 
     public function scopeGetBuyer($query, $id)
     {
-        return $query->where('buyer_id', $id)->orderBy('id', 'DESC')->where('remove', 0)->get();
+        return $query->where('buyer_id', $id)
+            ->orderBy('id', 'DESC')
+            ->where('remove', config('page.order.remove.active'))
+            ->get();
     }
 
     public function scopeGetDetail($query, $id)
     {
-        return $query->where('id', $id)->orderBy('id', 'DESC')->get();
+        return $query->where('id', $id)
+            ->orderBy('id', 'DESC')
+            ->get();
     }
 
     public function scopeDeleteOrder($query, $id)
     {
-        return $query->where('id', $id)->update(['remove' => 1]);
+        return $query->where('id', $id)
+            ->update(['remove' => config('page.order.remove.inactive')]);
     }
 }
 

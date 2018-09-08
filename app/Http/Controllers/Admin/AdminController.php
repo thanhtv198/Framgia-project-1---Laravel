@@ -37,8 +37,16 @@ class AdminController extends Controller
         $email = $request->email;
         $password = $request->password;
 
-        if (Auth::attempt(['email' => $email, 'password' => $password, 'level_id' => 1])
-            || Auth::attempt(['email' => $email, 'password' => $password, 'level_id' => 2])) {
+        if (Auth::attempt([
+                'email' => $email,
+                'password' => $password,
+                'level_id' => config('page.user.role.super_admin'),
+            ])
+            || Auth::attempt([
+                'email' => $email,
+                'password' => $password,
+                'level_id' => config('page.user.role.manager'),
+            ])) {
             return redirect('admin/home')->with('success', trans('common.login.success'));
         } else {
             return redirect()->back()->with('message', trans('common.login.failed'));
@@ -50,7 +58,7 @@ class AdminController extends Controller
      */
     public function logOut()
     {
-        if (Auth::user() && Auth::user()->level_id == 1) {
+        if (Auth::user() && Auth::user()->level_id == config('page.user.role.manager')) {
 
             Auth::logout();
         }

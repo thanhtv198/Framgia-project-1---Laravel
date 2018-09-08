@@ -8,8 +8,8 @@ return [
     'paginateProduct' => '9',
     'paginateProductSearch' => '6',
     'paginateNews' => '5',
-    'url_base' => 'http://onlinesmart.herokuapp.com/',
-//    'url_base' => 'http://localhost/Laravel/Framgia_project_1/public/',
+//    'url_base' => 'http://onlinesmart.herokuapp.com/',
+    'url_base' => 'http://localhost:8000/public/',
 
 
     'supportsCredentials' => false,
