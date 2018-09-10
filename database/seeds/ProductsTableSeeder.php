@@ -18,7 +18,7 @@ class ProductsTableSeeder extends Seeder
                     'name' => 'Xiaomi' . ' ' . str_random(7),
                     'price' => ($i + 1) . '000000',
                     'description' => 'Ở phiên bản 9.0, tính năng tự động sao lưu dự phòng mới chỉ hỗ trợ phương pháp Asynchronous Replication, có nghĩa là một transaction gửi đến Server chính (Master) được thực hiện và xác nhận hoàn thành với client ngay khi hoàn thành mà không cần quan tâm đến việc bản sao lưu của transaction này đã được hoàn thành ở server dự phòng (slave) hay chưa.
-                    Sang phiên bản 9.1 (phiên bản chính thức đi kèm với Ubuntu 12.04), tính năng tự động sao lưu dự phòng được bổ sung thêm một phương pháp nữa, đó là Synchronous Replication. Phương pháp này hoạt đồng tương tự như Asynchronous Replication, chỉ khác duy nhất là Master sẽ đợi cho Slave xác nhận đã sao lưu xong, sau đó mới "trả lời" client. Điện thoại Apple iPhone 8 64GB được phân phối chính hãng bởi FPTShop Điện thoại Apple iPhone 8 64GB được phân phối chính hãng bởi FPTShop',
+                    Sang phiên bản 9.1 (phiên bản chính thức đi kèm với Ubuntu 12.04), tính năng tự động sao lưu dự phòng được bổ sung thêm một phương pháp nữa, đó là Synchronous Replication. Phương pháp này hoạt đồng tương tự như Asynchronous Replication, chỉ khác duy nhất là Master sẽ đợi cho Slave xác nhận đã sao lưu xong, sau đó mới "trả lời" client. Xiaomi được phân phối chính hãng bởi FPTShop',
                     'promotion' => '200000',
                     'date_manufacture' => '2018-10-12',
                     'user_id' => 1,
@@ -49,7 +49,7 @@ class ProductsTableSeeder extends Seeder
                     'name' => 'Oppo' . ' ' . str_random(7),
                     'price' => ($i + 2) . '000000',
                     'description' => '64GB được phân phối Ở phiên bản 9.0, tính năng tự động sao lưu dự phòng mới chỉ hỗ trợ phương pháp Asynchronous Replication, có nghĩa là một transaction gửi đến Server chính (Master) được thực hiện và xác nhận hoàn thành với client ngay khi hoàn thành mà không cần quan tâm đến việc bản sao lưu của transaction này đã được hoàn thành ở server dự phòng (slave) hay chưa.
-                    Sang phiên bản 9.1 (phiên bản chính thức đi kèm với Ubuntu 12.04), tính năng tự động sao lưu dự phòng được bổ sung thêm một phương pháp nữa, đó là Synchronous Replication. Phương pháp này hoạt đồng tương tự như Asynchronous Replication, chỉ khác duy nhất là Master sẽ đợi cho Slave xác nhận đã sao lưu xong, sau đó mới "trả lời" client. chính hãng bởi FPTShop Điện thoại Apple iPhone 8 64GB được phân phối chính hãng bởi FPTShop',
+                    Sang phiên bản 9.1 (phiên bản chính thức đi kèm với Ubuntu 12.04), tính năng tự động sao lưu dự phòng được bổ sung thêm một phương pháp nữa, đó là Synchronous Replication. Phương pháp này hoạt đồng tương tự như Asynchronous Replication, chỉ khác duy nhất là Master sẽ đợi cho Slave xác nhận đã sao lưu xong, sau đó mới "trả lời" client. chính hãng bởi FPTShop Điện thoại Oppo 64GB được phân phối chính hãng bởi FPTShop',
                     'promotion' => '200000',
                     'date_manufacture' => '2018-10-12',
                     'user_id' => 2,
@@ -111,7 +111,7 @@ class ProductsTableSeeder extends Seeder
                     'name' => 'Iphone' . ' ' . str_random(7),
                     'price' => ($i + 1) . '000000',
                     'description' => 'Đầu tiên các bạn cần liệt kê thứ tự các bảng cần import, tất nhiên là các bảng một trước rồi mới đến bảng nhiều, sau đó export từng bảng Ở phiên bản 9.0, tính năng tự động sao lưu dự phòng mới chỉ hỗ trợ phương pháp Asynchronous Replication, có nghĩa là một transaction gửi đến Server chính (Master) được thực hiện và xác nhận hoàn thành với client ngay khi hoàn thành mà không cần quan tâm đến việc bản sao lưu của transaction này đã được hoàn thành ở server dự phòng (slave) hay chưa.
-                                        Sang phiên bản 9.1 (phiên bản chính thức đi kèm với Ubuntu 12.04), tính năng tự động sao lưu dự phòng được bổ sung thêm một phương pháp nữa, đó là Synchronous Replication. Phương pháp này hoạt đồng tương tự như Asynchronous Replication, chỉ khác duy nhất là Master sẽ đợi cho Slave xác nhận đã sao lưu xong, sau đó mới "trả lời" client.',
+                     Sang phiên bản 9.1 (phiên bản chính thức đi kèm với Ubuntu 12.04), tính năng tự động sao lưu dự phòng được bổ sung thêm một phương pháp nữa, đó là Synchronous Replication. Phương pháp này hoạt đồng tương tự như Asynchronous Replication, chỉ khác duy nhất là Master sẽ đợi cho Iphone Apple Slave xác nhận đã sao lưu xong, sau đó mới "trả lời" client.',
                     'promotion' => '200000',
                     'date_manufacture' => '2018-10-12',
                     'user_id' => 4,
@@ -142,7 +142,7 @@ class ProductsTableSeeder extends Seeder
                     'name' => 'Meizu' . ' ' . str_random(7),
                     'price' => ($i + 1) . '000000',
                     'description' => 'Đầu tiên các bạn cần liệt kê thứ tự các bảng cần import, tất nhiên là các bảng một trước rồi mới đến bảng nhiều, sau đó export từng bảng Ở phiên bản 9.0, tính năng tự động sao lưu dự phòng mới chỉ hỗ trợ phương pháp Asynchronous Replication, có nghĩa là một transaction gửi đến Server chính (Master) được thực hiện và xác nhận hoàn thành với client ngay khi hoàn thành mà không cần quan tâm đến việc bản sao lưu của transaction này đã được hoàn thành ở server dự phòng (slave) hay chưa.
-                    Sang phiên bản 9.1 (phiên bản chính thức đi kèm với Ubuntu 12.04), tính năng tự động sao lưu dự phòng được bổ sung thêm một phương pháp nữa, đó là Synchronous Replication. Phương pháp này hoạt đồng tương tự như Asynchronous Replication, chỉ khác duy nhất là Master sẽ đợi cho Slave xác nhận đã sao lưu xong, sau đó mới "trả lời" client.',
+                    Sang phiên bản 9.1 (phiên bản chính thức đi kèm với Ubuntu 12.04), tính năng tự động sao lưu dự phòng được bổ sung thêm một phương pháp nữa, Meizu đó là Synchronous Replication. Phương pháp này hoạt đồng tương tự như Asynchronous Replication, chỉ khác duy nhất là Master sẽ đợi cho Slave xác nhận đã sao lưu xong, sau đó mới "trả lời" client.',
                     'promotion' => '300000',
                     'date_manufacture' => '2018-10-12',
                     'user_id' => $i + 1,
@@ -173,7 +173,7 @@ class ProductsTableSeeder extends Seeder
                     'name' => 'Sony' . ' ' . str_random(7),
                     'price' => ($i + 1) . '000000',
                     'description' => 'Đầu tiên các bạn cần liệt kê thứ tự các bảng cần import, tất nhiên là các bảng một trước rồi mới đến bảng nhiều, sau đó export từng bảng Ở phiên bản 9.0, tính năng tự động sao lưu dự phòng mới chỉ hỗ trợ phương pháp Asynchronous Replication, có nghĩa là một transaction gửi đến Server chính (Master) được thực hiện và xác nhận hoàn thành với client ngay khi hoàn thành mà không cần quan tâm đến việc bản sao lưu của transaction này đã được hoàn thành ở server dự phòng (slave) hay chưa.
-                    Sang phiên bản 9.1 (phiên bản chính thức đi kèm với Ubuntu 12.04), tính năng tự động sao lưu dự phòng được bổ sung thêm một phương pháp nữa, đó là Synchronous Replication. Phương pháp này hoạt đồng tương tự như Asynchronous Replication, chỉ khác duy nhất là Master sẽ đợi cho Slave xác nhận đã sao lưu xong, sau đó mới "trả lời" client.',
+                    Sang phiên bản 9.1 (phiên bản chính thức đi kèm với Ubuntu 12.04),Sony tính năng tự động sao lưu dự phòng được bổ sung thêm một phương pháp nữa, đó là Synchronous Replication. Phương pháp này hoạt đồng tương tự như Asynchronous Replication, chỉ khác duy nhất là Master sẽ đợi cho Slave xác nhận đã sao lưu xong, sau đó mới "trả lời" client.',
                     'promotion' => '300000',
                     'date_manufacture' => '2018-10-12',
                     'user_id' => $i + 1,

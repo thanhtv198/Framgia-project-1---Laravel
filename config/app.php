@@ -9,13 +9,12 @@ return [
     'paginateProductSearch' => '6',
     'paginateNews' => '5',
     'url_base' => 'http://onlinesmart.herokuapp.com/',
-//    'url_base' => 'http://localhost:8000/public/',
-
+//    'url_base' => 'http://localhost:8000/',
 
     'supportsCredentials' => false,
     'allowedOrigins' => ['*'],
     'allowedHeaders' => ['Content-Type', 'X-Requested-With'],
-    'allowedMethods' => ['*'], // ex: ['GET', 'POST', 'PUT',  'DELETE']
+    'allowedMethods' => ['*'],
     'exposedHeaders' => [],
     'maxAge' => 0,
     /*

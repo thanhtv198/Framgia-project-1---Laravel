@@ -52,7 +52,7 @@ class HomeController extends Controller
     public function search(Request $request)
     {
         $key1 = $request->key;
-        $key = str_replace('__', '/', $key1);;
+        $key = str_replace('__', '/', $key1);
 
         $users = User::search($key);
 
@@ -62,7 +62,7 @@ class HomeController extends Controller
             }
 
             if (($userId) != null) {
-                $products = Product::searchCommon($key, $userId);
+                $products = Product::searchByUser($userId);
             }
         } else {
             $products = Product::searchNameDes($key);

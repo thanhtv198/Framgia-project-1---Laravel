@@ -81,11 +81,9 @@ class Product extends Model
             ->paginate(config('app.paginateProduct'));
     }
 
-    public function scopeSearchCommon($query, $key, $user_id)
+    public function scopeSearchByUser($query, $user_id)
     {
-        return $query->where('name', 'ilike', '%' . $key . '%')
-            ->orWhere('description', 'ilike', '%' . $key . '%')
-            ->orWhereIn('user_id', $user_id)
+        return $query->whereIn('user_id', $user_id)
             ->where('remove', config('page.product.remove.active'))
             ->where('status', config('page.product.status.inactive'))
             ->paginate(config('app.paginateProduct'));
@@ -94,6 +92,8 @@ class Product extends Model
     public function scopeSearchNameDes($query, $key)
     {
         return $query->where('name', 'ilike', '%' . $key . '%')
+            ->where('remove', config('page.product.remove.active'))
+            ->where('status', config('page.product.status.inactive'))
             ->orWhere('description', 'ilike', '%' . $key . '%')
             ->where('remove', config('page.product.remove.active'))
             ->where('status', config('page.product.status.inactive'))

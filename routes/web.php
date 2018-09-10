@@ -140,7 +140,7 @@ Route::group(['namespace' => 'Site'], function () {
     // profile user
     Route::group(['prefix' => 'profile', 'middleware' => 'require_login'], function () {
         Route::get('/{id}', 'ProfileController@getProfile')->name('get_profile');
-        Route::post('/{id}', 'ProfileController@postProfile')->name('get_profile');
+        Route::post('/{id}', 'ProfileController@postProfile')->name('post_profile');
         Route::get('/sell', 'ProfileController@getSell')->name('get_sell');
     });
 
