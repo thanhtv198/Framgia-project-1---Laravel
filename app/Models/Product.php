@@ -139,9 +139,7 @@ class Product extends Model
 
     public function scopeGetById($query, $id)
     {
-        return $query->findOrFail($id)
-            ->where('remove', config('page.product.remove.active'))
-            ->first();
+        return $query->findOrFail($id);
     }
 
     public function scopeAccept($query, $id)

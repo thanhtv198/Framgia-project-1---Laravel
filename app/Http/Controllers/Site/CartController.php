@@ -56,7 +56,7 @@ class CartController extends Controller
     public function updateCart(Request $request)
     {
         $carts = Cart::content();
-
+dd($carts);
         foreach ($carts as $row) {
             $id = $row->rowId;
             $qty = $request->input('qty' . $id);

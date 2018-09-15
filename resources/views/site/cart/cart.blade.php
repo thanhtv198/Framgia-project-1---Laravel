@@ -37,7 +37,7 @@
                                         </a>
                                     </td>
                                     <td class="invert">
-                                        <input type="number" name="qty{{ $row->rowId }}" value={{ $row->qty }} />
+                                        <input type="number" id="number-in-cart" min="1" name="qty{{ $row->rowId }}" value={{ $row->qty }} />
                                     </td>
                                     <td class="invert">{{ number_format(($row->price) * $row->qty) }}</td>
                                     <td class="invert">

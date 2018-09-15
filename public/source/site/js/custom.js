@@ -11,10 +11,11 @@ $(document).ready(function () {
         event.preventDefault();
         $.ajax({
             url: $(this).attr('href'),
-            success: function () {
-                alert(('Add to cart success!'));
+            success: function (data) {
+                alert('Add to cart success');
             }
         });
+
         return false; //for good measure
     });
 });
@@ -23,7 +24,6 @@ function addToCart() {
     var a = document.getElementById("count_cart").innerText;
     var b = parseInt(a) + 1;
     document.getElementById("count_cart").innerHTML = b;
-    console.log(b);
 }
 // add-compare
 $(document).ready(function () {
