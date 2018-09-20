@@ -30,12 +30,7 @@
     <script src="{{ asset('source/site/js/172.jquery.min.js') }}"></script>
     <!-- js-files -->
     <!-- jquery -->
-    <script src="{{ asset('vendor/unisharp/laravel-ckeditor/ckeditor.js') }}"></script>
-    <script>
-        $(document).ready(function () {
-            CKEDITOR.replace( 'description' );
-        });
-    </script>
+
     <script src="{{ asset('source/site/js/jquery-2.1.4.min.js') }}"></script>
     <!-- //jquery -->
     <!-- popup modal (for signin & signup)-->
@@ -55,12 +50,12 @@
     <link rel="stylesheet" href="{{ asset('source/site/css/jquery-ui.css') }}" type="text/css">
     <link rel="stylesheet" href="{{ asset('source/site/css//star-rating.css') }}" type="text/css">
     <script src="{{ asset('source/site/js/star-rating.js') }}"></script>
+    <script src="{{ asset('vendor/unisharp/laravel-ckeditor/ckeditor.js') }}"></script>
     <!-- fonts -->
 </head>
 <body>
 <div class="app">
 @include('site/layouts/header')
-
 @yield('content')
 @include('site/layouts/footer')
 </div>

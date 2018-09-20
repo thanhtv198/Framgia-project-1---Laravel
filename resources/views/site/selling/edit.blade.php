@@ -177,9 +177,7 @@
     </section>
     <script type="text/javascript">
         $(document).ready(function () {
-            $('.plus-custom').click(function () {
-                $('#custom-prop').show();
-            });
+            CKEDITOR.replace( 'description' );
         });
     </script>
 @endsection

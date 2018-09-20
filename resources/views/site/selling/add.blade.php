@@ -121,7 +121,6 @@
                         {!! Form::number('battery', null, ['class' => 'form-control input-md', 'placeholder' => trans('common.product.battery')]) !!}
                     </div>
                 </div>
-
                 <div class="plus-custom" style="margin-top: 15px;margin-bottom:10px;color:red">
                     {{ __(' Add more properties') }}
                     <span class="fa fa-plus-square" id="plus"></span>
@@ -145,7 +144,6 @@
                             </div>
                         </div>
                     </div>
-
                 </div>
                 <div class="form-group">
                     <label class="col-md-4 control-label" for="filebutton">{{ trans('common.product.image') }}</label>
@@ -166,9 +164,7 @@
     <!-- /.content -->
     <script type="text/javascript">
         $(document).ready(function () {
-            $('.plus-custom').click(function () {
-                $('#custom-prop').show();
-            });
+            CKEDITOR.replace( 'description' );
         });
     </script>
 @endsection

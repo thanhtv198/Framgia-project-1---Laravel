@@ -74,18 +74,13 @@ function deleteRow(x) {
     var sub = x.parentNode.parentNode.parentNode.children[1].children[0].value;
     document.getElementById("count_cart").innerHTML = total - sub;
 }
+
 //delete sold
 function deleteSold(x) {
     var a = x.parentNode.parentNode.parentNode.rowIndex - 1;
     // console.log(a);
     var b = document.getElementById("cart_table").deleteRow(a);
 }
-//delete order
-// $(document).ready(function () {
-//     $(".delele-order").click(function () {
-//         // $(".export").hide();
-//     });
-// });
 
 // delete sell
 function deleteSell(x) {
@@ -111,6 +106,7 @@ function autoComplete() {
         }
     });
 }
+
 //search name
 $(document).ready(function () {
     $('.search_name').click(function(){
@@ -121,6 +117,7 @@ $(document).ready(function () {
         window.location.href = url + 'search' + '/' + key;
     });
 });
+
 //search address
 $(document).ready(function () {
     $('.btn-address').click(function(){
@@ -143,5 +140,12 @@ $(document).ready(function () {
         }else{
             window.location.href = url + 'price'  + '/' + from + '/' + to;
         }
+    });
+});
+
+//add product
+$(document).ready(function () {
+    $('.plus-custom').click(function () {
+        $('#custom-prop').show();
     });
 });
