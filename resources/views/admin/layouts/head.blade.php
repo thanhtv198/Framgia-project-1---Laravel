@@ -28,10 +28,5 @@
     <script src="{{ asset('source/admin/assets/dist/js/adminlte.min.js') }}"></script>
     <script src="{{ asset('source/admin/assets/dist/js/custom.js') }}"></script>
     <script src="{{ asset('vendor/unisharp/laravel-ckeditor/ckeditor.js') }}"></script>
-    <script>
-        $(document).ready(function () {
-            CKEDITOR.replace( 'content' );
-        });
-    </script>
 </head>
 

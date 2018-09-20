@@ -42,5 +42,10 @@
             {!! Form::close() !!}
         </div>
     </div>
+    <script>
+        $(document).ready(function () {
+            CKEDITOR.replace( 'content' );
+        });
+    </script>
 @endsection
 
